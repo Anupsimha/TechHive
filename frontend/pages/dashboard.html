@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h2>Welcome to Your Dashboard</h2>
+    <button id="logoutBtn">Logout</button>
+
+    <h3>Create Post</h3>
+    <form id="postForm">
+        <input type="text" id="title" placeholder="Post Title" required>
+        <textarea id="content" placeholder="Post Content" required></textarea>
+        <button type="submit">Add Post</button>
+    </form>
+
+    <h3>Your Posts</h3>
+    <div id="postsContainer"></div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/posts.js"></script>
+</body>
+</html>
