@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (loginForm) {
         loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
 
-            if (!username || !password) {
-                alert("Please enter both username and password.");
+            if (!email || !password) {
+                alert("Please enter both email and password.");
                 return;
             }
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const res = await fetch(`${API_URL}/auth/login`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ username, password }),
+                    body: JSON.stringify({ email, password }),
                 });
 
                 const data = await res.json();
@@ -39,9 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
         registerForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
 
-            if (!username || !password) {
+            if (!username || !email || !password) {
                 alert("Please fill all fields.");
                 return;
             }
@@ -50,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 const res = await fetch(`${API_URL}/auth/register`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ username, password }),
+                    body: JSON.stringify({ username, email, password }),
                 });
 
                 if (!res.ok) throw new Error("Registration failed. Try a different username.");
 
                 alert("Registration successful! Please login.");
-                window.location.href = "login.html";
+                window.location.href = "../pages/login.html";
             } catch (error) {
                 alert(error.message);
             }
